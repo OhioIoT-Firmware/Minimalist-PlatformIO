@@ -31,7 +31,6 @@ To override the CA_CERT to point your device to a different MQTT broker, create 
 #endif
 
 
-
 // Override the following with build flags in platformio if you want something different
 
 #ifndef MQTT_HOST
@@ -56,12 +55,17 @@ Controller controller;
 
 
 
+
+
 void Controller::setup(const char * wifi_ssid, const char * wifi_pass, const char * mqtt_user, const char * mqtt_pass) {
 
     char deviceID[9];
     device_id.get_or_set(deviceID);
 
 	wifi_tools.begin(wifi_ssid, wifi_pass);
+
+	Serial.print("\tusing MQTT host: ");	Serial.println(MQTT_HOST);
+	Serial.print("\tusing MQTT port: ");	Serial.println(MQTT_PORT);
 
 	mqtt.setup(MQTT_HOST, MQTT_PORT, mqtt_user, mqtt_pass, deviceID, CA_CERT); 
 
@@ -91,3 +95,5 @@ void Controller::loop() {
 
 
 }
+
+
