@@ -41,7 +41,7 @@ To override the CA_CERT to point your device to a different MQTT broker, create 
     #define MQTT_PORT 8883
 #endif
 
-char wifi_ssid[WIFI_SSID_LEN];	// are these LEN defined anywhere?
+char wifi_ssid[WIFI_SSID_LEN];	// defined in wifi_tools.h
 char wifi_pass[WIFI_PASS_LEN];
 
 
@@ -59,7 +59,7 @@ Controller controller;
 
 void Controller::setup(const char * wifi_ssid, const char * wifi_pass, const char * mqtt_user, const char * mqtt_pass) {
 
-    char deviceID[9];
+    char deviceID[DEVICE_ID_LEN];
     device_id.get_or_set(deviceID);
 
 	wifi_tools.begin(wifi_ssid, wifi_pass);
@@ -89,6 +89,7 @@ void Controller::loop() {
 
 	} else {
 
+			events.increment_ram("wifi_retries");	// @Scaler — RAM only: fires every RECONNECT_INTERVAL while offline, so no NVS write per attempt.  flushed on the reconnect edge below.
 		mqtt.report_disconnect();
 
 	}
