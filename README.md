@@ -6,26 +6,11 @@ This code base is designed to help you connect your device to the OhioIoT cloud-
 
 This code is subject to ongoing development.  If you have any feedback or questions, please send a note from the web page: [ohioiot.com/contact](https://ohioiot.com/contact).
 
-```cpp
-
-// define your variables
-
-void setup() {
-    controller.setup(WIFI_SSID, WIFI_PASS, MQTT_USER, MQTT_PASS);
-    // add your own code
-}
-
-void loop()  {
-    controller.loop();
-    // add your own code
-}
-
-```
 
 ## Quick Start
 
-1. git clone this repo
-2. rename src/credentials.tempate -> credentials.h
+1. Git clone this repo
+2. Rename `src/credentials.tempate` -> `credentials.h`
 3. Add your WiFi and MQTT credentials to the credentials.h; MQTT credentials found in the Settings tab of the app
 4. Burn to your device
 
