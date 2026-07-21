@@ -10,7 +10,7 @@ This code is subject to ongoing development.  If you have any feedback or questi
 ## Quick Start
 
 1. Git clone this repo
-2. Rename `src/credentials.tempate` -> `credentials.h`
+2. Rename `src/credentials.tempate` -> `src/credentials.h`
 3. Add your WiFi and MQTT credentials to the credentials.h; MQTT credentials found in the Settings tab of the app
 4. Burn to your device
 
